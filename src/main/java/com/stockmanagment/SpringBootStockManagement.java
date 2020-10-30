@@ -34,6 +34,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 public class SpringBootStockManagement  {
+	// stockmanagment server begin
 	 @Resource
 	  StorageService storageService;
 
