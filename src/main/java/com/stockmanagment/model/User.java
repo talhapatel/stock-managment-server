@@ -3,6 +3,7 @@ package com.stockmanagment.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -39,6 +40,7 @@ public class User{
     @Size(min=3, max = 50)
     private String name;
 
+    @Column(unique=true)
     @NotBlank
     @Size(min=3, max = 50)
     private String username;

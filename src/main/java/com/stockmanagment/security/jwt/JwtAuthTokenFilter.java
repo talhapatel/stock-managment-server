@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.stockmanagment.security.services.UserDetailsServiceImpl;
+import com.stockmanagment.security.services.UserPrinciple;
 import com.stockmanagment.util.JwtProvider;
 
 public class JwtAuthTokenFilter extends OncePerRequestFilter {
@@ -44,6 +45,8 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
 				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
 				SecurityContextHolder.getContext().setAuthentication(authentication);
+				
+				request.setAttribute("user",(UserPrinciple) userDetails);
 			}
 		} catch (Exception e) {
 			logger.error("Can NOT set user authentication -> Message: {}", e);
