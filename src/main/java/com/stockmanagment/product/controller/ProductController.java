@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +34,7 @@ public class ProductController extends BaseController{
 		
 		
 		setData("product",productService.addProduct(product) );
-		addSuccess(GoMessageType.ADD_SUCCESS);
+		addSuccess(GoMessageType.ADD_SUCCESS,"Product");
 		return renderResponse();
 	}
 	
@@ -47,6 +48,13 @@ public class ProductController extends BaseController{
 	public ApiResponse getProductById(@PathVariable("id") Long id) {
 		
 		setData("product",productService.getProductById(id));
+		return renderResponse();
+	}
+	
+	@DeleteMapping("/{id}")
+	public ApiResponse deleteByProductId(@PathVariable("id") Long  id) {
+		productService.deleteByProductId(id);
+		addSuccess(GoMessageType.DELETE_SUCCESS, "Product");
 		return renderResponse();
 	}
 

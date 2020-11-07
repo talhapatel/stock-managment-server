@@ -34,4 +34,9 @@ public class ProductService {
 		// TODO Auto-generated method stub
 		return productRepository.findById(id);
 	}
+
+	public void deleteByProductId(Long id) {
+		// TODO Auto-generated method stub
+		productRepository.deleteById(id);
+	}
 }
